@@ -7,7 +7,7 @@
 #include <string>
 
 
-const enum LogSeverity
+enum LogSeverity
 {
     ERROR = 1, WARNING, INFO, DEBUG
 };
@@ -34,7 +34,7 @@ public:
 
     Logger(const LogSeverity& severity_filter) : severity_filter_(severity_filter) { }
 
-    Logger() : severity_filter_(LogSeverity::ERROR) { }
+    Logger() : severity_filter_(ERROR) { }
 
     void Debug(const std::string& message) const;
 

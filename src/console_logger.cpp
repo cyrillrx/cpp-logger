@@ -16,7 +16,6 @@
 void ConsoleLogger::Write(const LogSeverity& severity, const std::string& message) const
 {
     if (severity > severity_filter_) {
-        std::cout << "severity > severity_filter_ " << severity_filter_ << std::endl;
         return;
     }
     std::cout << CurrentTime("%Y-%m-%d %H:%M:%S") + " - " + Prefix(severity) + message << std::endl;

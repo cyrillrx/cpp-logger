@@ -7,23 +7,16 @@
 
 TEST(TestLogger, Log)
 {
-
-    std::cout << "***************************************" << std::endl;
-    std::cout << "***************************************" << std::endl;
-    std::cout << "***************************************" << std::endl;
     LoggerManager logger = LoggerManager();
-    ConsoleLogger consoleLogger(WARNING);
+    //std::unique_ptr<Logger> consoleLogger(new ConsoleLogger(WARNING));
+    auto consoleLogger(new ConsoleLogger(WARNING));
 
-    logger.AddLogger(&consoleLogger);
+    logger.AddLogger(consoleLogger);
 
     logger.Debug("Test message to log : D");
     logger.Info("Test message to log : I");
     logger.Warning("Test message to log : W");
     logger.Error("Test message to log : E");
-
-    std::cout << "***************************************" << std::endl;
-    std::cout << "***************************************" << std::endl;
-    std::cout << "***************************************" << std::endl;
 
     SUCCEED();
 }

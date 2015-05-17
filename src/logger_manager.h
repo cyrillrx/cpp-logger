@@ -5,6 +5,7 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "logger.h"
 
 class LoggerManager
@@ -12,13 +13,13 @@ class LoggerManager
 
 private:
 
-    std::vector<Logger> loggers_;
+    //std::vector<const std::unique_ptr<Logger>> loggers_;
+    std::vector<const Logger*> loggers_;
 
 public:
 
-    std::vector<Logger> loggers() const { return loggers_; }
-
-    void AddLogger(const Logger& logger);
+    //void AddLogger(const std::unique_ptr<Logger>& logger);
+    void AddLogger(const Logger* logger);
 
     void Debug(const std::string& message) const;
 
