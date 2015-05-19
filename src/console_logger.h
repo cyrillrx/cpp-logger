@@ -6,13 +6,16 @@
 
 #include "logger.h"
 
+
 class ConsoleLogger : public Logger
 {
 
 protected:
-    virtual void Write(const LogSeverity& severity, const std::string& message) const override;
+
+    virtual void DoWrite(const std::string& message) const override;
 
 public:
+
     ConsoleLogger(const LogSeverity& severity_filter) : Logger(severity_filter) { }
 
     ConsoleLogger() : Logger() { }

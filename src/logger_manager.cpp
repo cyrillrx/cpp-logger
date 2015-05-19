@@ -5,10 +5,9 @@
 #include "logger_manager.h"
 
 
-//void LoggerManager::AddLogger(const std::unique_ptr<Logger>& logger)
-void LoggerManager::AddLogger(const Logger* logger)
+void LoggerManager::AddLogger(std::unique_ptr<Logger>& logger)
 {
-    loggers_.push_back(logger);
+    loggers_.push_back(std::move(logger));
 }
 
 void LoggerManager::Debug(const std::string& message) const

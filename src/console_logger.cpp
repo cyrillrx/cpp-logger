@@ -7,16 +7,7 @@
 #include <iostream>
 
 
-/**
- * Add date and time.
- * Specify the file to write in.
- * Write in the file.
- * @param message The message to log.
- */
-void ConsoleLogger::Write(const LogSeverity& severity, const std::string& message) const
+void ConsoleLogger::DoWrite(const std::string& message) const
 {
-    if (severity > severity_filter_) {
-        return;
-    }
-    std::cout << CurrentTime("%Y-%m-%d %H:%M:%S") + " - " + Prefix(severity) + message << std::endl;
+    std::cout << message << std::endl;
 }

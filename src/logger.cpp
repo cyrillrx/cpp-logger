@@ -9,28 +9,11 @@
 #include <iomanip> // put_time
 
 
+const std::string Logger::TIME_FORMAT = "%Y-%m-%d %H:%M:%S";
 const std::string Logger::PREFIX_DEBUG = "DEBUG: ";
 const std::string Logger::PREFIX_INFO = "INFO : ";
 const std::string Logger::PREFIX_WARNING = "WARN : ";
 const std::string Logger::PREFIX_ERROR = "ERROR: ";
-
-std::string Logger::Prefix(const LogSeverity& severity)
-{
-    switch (severity) {
-
-        case DEBUG:
-            return PREFIX_DEBUG;
-
-        case INFO:
-            return PREFIX_INFO;
-
-        case WARNING:
-            return PREFIX_WARNING;
-
-        default:
-            return PREFIX_ERROR;
-    }
-}
 
 /**
 * %a	Abbreviated weekday name		=> Thu
@@ -56,8 +39,8 @@ std::string Logger::Prefix(const LogSeverity& severity)
 * %Z	Timezone name or abbreviation	=> CDT
 * %%	A % sign						=> %
 */
-std::string Logger::CurrentTime(const std::string& format) {
-
+std::string Logger::CurrentTime(const std::string& format)
+{
     auto now = std::chrono::system_clock::now();
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
 
@@ -73,6 +56,43 @@ std::string Logger::CurrentTime(const std::string& format) {
     }
     return ss.str();
 }
+
+std::string Logger::BuildMessage(const LogSeverity& severity, const std::string& message)
+{
+    const std::string timePrefix = CurrentTime(TIME_FORMAT);
+
+    switch (severity) {
+
+        case DEBUG:
+            return timePrefix + " - " + PREFIX_DEBUG + message;
+
+        case INFO:
+            return timePrefix + " - " + PREFIX_INFO + message;
+
+        case WARNING:
+            return timePrefix + " - " + PREFIX_WARNING + message;
+
+        default:
+            return timePrefix + " - " + PREFIX_ERROR + message;
+    }
+}
+
+/**
+ * Checks severity filter.
+ * Adds the prefix to the message.
+ * Calls DoWrite()
+ * @param message The message to log.
+ */
+void Logger::Write(const LogSeverity& severity, const std::string& message) const
+{
+    // Apply severity filter
+    if (severity > severity_filter_) {
+        return;
+    }
+    // Call the actual writer
+    DoWrite(BuildMessage(severity, message));
+}
+
 
 void Logger::Debug(const std::string& message) const
 {

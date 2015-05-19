@@ -8,18 +8,17 @@
 #include <memory>
 #include "logger.h"
 
+
 class LoggerManager
 {
 
 private:
 
-    //std::vector<const std::unique_ptr<Logger>> loggers_;
-    std::vector<const Logger*> loggers_;
+    std::vector<std::unique_ptr<Logger>> loggers_;
 
 public:
 
-    //void AddLogger(const std::unique_ptr<Logger>& logger);
-    void AddLogger(const Logger* logger);
+    void AddLogger(std::unique_ptr<Logger>& logger);
 
     void Debug(const std::string& message) const;
 

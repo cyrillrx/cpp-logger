@@ -14,21 +14,26 @@ enum LogSeverity
 
 class Logger
 {
+
 private:
 
+    static const std::string TIME_FORMAT;
     static const std::string PREFIX_DEBUG;
     static const std::string PREFIX_INFO;
     static const std::string PREFIX_WARNING;
     static const std::string PREFIX_ERROR;
 
-protected:
-    static std::string Prefix(const LogSeverity& severity);
-
     static std::string CurrentTime(const std::string& format);
 
-    LogSeverity severity_filter_;
+    static std::string BuildMessage(const LogSeverity& severity, const std::string& message);
 
-    virtual void Write(const LogSeverity& severity, const std::string& message) const = 0;
+    void Write(const LogSeverity& severity, const std::string& message) const;
+
+    virtual void DoWrite(const std::string& message) const = 0;
+
+protected:
+
+    LogSeverity severity_filter_;
 
 public:
 
