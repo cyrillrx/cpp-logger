@@ -6,7 +6,6 @@
 
 #include <iostream>
 
-
 void ConsoleLogger::DoWrite(const std::string& message) const
 {
     std::cout << message << std::endl;

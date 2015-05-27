@@ -6,10 +6,8 @@
 
 #include "logger.h"
 
-
 class ConsoleLogger : public Logger
 {
-
 protected:
 
     virtual void DoWrite(const std::string& message) const override;

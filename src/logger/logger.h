@@ -6,7 +6,6 @@
 
 #include <string>
 
-
 enum LogSeverity
 {
     ERROR = 1, WARNING, INFO, DEBUG
@@ -14,7 +13,6 @@ enum LogSeverity
 
 class Logger
 {
-
 private:
 
     static const std::string TIME_FORMAT;

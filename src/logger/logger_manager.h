@@ -8,10 +8,8 @@
 #include <memory>
 #include "logger.h"
 
-
 class LoggerManager
 {
-
 private:
 
     std::vector<std::unique_ptr<Logger>> loggers_;

@@ -8,7 +8,6 @@
 #include <sstream> // stringstream
 #include <iomanip> // put_time
 
-
 const std::string Logger::TIME_FORMAT = "%Y-%m-%d %H:%M:%S";
 const std::string Logger::PREFIX_DEBUG = "DEBUG: ";
 const std::string Logger::PREFIX_INFO = "INFO : ";

@@ -4,7 +4,6 @@
 
 #include "logger_manager.h"
 
-
 void LoggerManager::AddLogger(std::unique_ptr<Logger>& logger)
 {
     loggers_.push_back(std::move(logger));

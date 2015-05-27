@@ -1,16 +1,14 @@
 #include <iostream>
 
-#include "../src/logger_manager.h"
-#include "../src/console_logger.h"
+#include "../src/logger/logger_manager.h"
+#include "../src/logger/console_logger.h"
 
 #include "gtest/gtest.h"
 
 TEST(TestLogger, Log)
 {
-    LoggerManager logger = LoggerManager();
-
+    auto logger = LoggerManager();
     std::unique_ptr<Logger> consoleLogger(new ConsoleLogger(WARNING));
-
     logger.AddLogger(consoleLogger);
 
     logger.Debug("Debug message.");
