@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "../src/logger/logger_manager.h"
-#include "../src/logger/console_logger.h"
+#include "../main/logger_manager.h"
+#include "../main/console_logger.h"
 
 #include "gtest/gtest.h"
 
