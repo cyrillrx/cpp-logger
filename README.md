@@ -1,4 +1,5 @@
-# A basic cpp logger
+# Cpp logger
+A basic logger for cpp
 
 # Build scripts
 ## Install the requirements
@@ -18,4 +19,20 @@ $ cmake ../ -DBUILD_TEST=TRUE && cmake --build .
 $ cd bin
 $ test_looger.exe (WIN)
 $ ./test_looger (UNIX)
+```
+
+# Reuse
+## Export module
+```
+$ conan export cyrillrx/stable
+```
+
+## Check availability
+```
+$ conan search *Logger*
+```
+
+## Install the module
+```
+$ conan install Logger/0.1.0@cyrillrx/stable --build Logger
 ```

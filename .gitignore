@@ -24,8 +24,8 @@ lib
 ipch
 
 # Conan.io
-conanbuild*
-conaninfo*
+conanbuildinfo.*
+conaninfo.txt
 
 # Other
 build/
