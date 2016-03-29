@@ -19,7 +19,7 @@ $ cmake ../ -DBUILD_TEST=TRUE && cmake --build .
 ```
 $ cd bin
 $ test_looger.exe (WIN)
-$ ./test_looger (UNIX)
+$ ./test_logger (UNIX)
 ```
 
 # Reuse

@@ -26,6 +26,7 @@ ipch
 # Conan.io
 conanbuildinfo.*
 conaninfo.txt
+conanfile.pyc
 
 # Other
 build/
