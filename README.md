@@ -18,7 +18,7 @@ $ cmake ../ -DBUILD_TEST=TRUE && cmake --build .
 ## Execute the test!
 ```
 $ cd bin
-$ test_looger.exe (WIN)
+$ test_logger.exe (WIN)
 $ ./test_logger (UNIX)
 ```
 
