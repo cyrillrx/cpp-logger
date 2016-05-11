@@ -40,7 +40,17 @@ const std::string Logger::PREFIX_ERROR = "ERROR: ";
 */
 std::string Logger::CurrentTime(const std::string& format)
 {
+    auto milliseconds_since_epoch =
+            std::chrono::system_clock::now().time_since_epoch() /
+            std::chrono::milliseconds(1);
+
     auto now = std::chrono::system_clock::now();
+    auto tp = now.time_since_epoch();
+
+    auto sec = std::chrono::duration_cast<std::chrono::seconds>(tp);
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(tp);
+    auto msDiff = ms.count() - sec.count() * 1000;
+
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
 
     std::stringstream ss;
@@ -51,7 +61,7 @@ std::string Logger::CurrentTime(const std::string& format)
 
     // note: localtime() is not threadsafe, lock with a mutex if necessary
     if (strftime(buffer, buffer_size, format.c_str(), localtime(&in_time_t))) {
-        ss << buffer;
+        ss << buffer << "." << msDiff;
     }
     return ss.str();
 }
